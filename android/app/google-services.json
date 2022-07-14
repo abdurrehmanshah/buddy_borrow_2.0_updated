@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "943210984347",
+    "project_id": "borrow-buddy-5da10",
+    "storage_bucket": "borrow-buddy-5da10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943210984347:android:4c8a23bfb2fb7b52a8a73e",
+        "android_client_info": {
+          "package_name": "com.devs.buddyborrow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943210984347-7s31lpoeqt3e2me35h8pitj7uv81npgj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXHujAYPh2-OVTTaP5dAhVh8vpnjfISNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943210984347-7s31lpoeqt3e2me35h8pitj7uv81npgj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "943210984347-e85bos2csca5kssa4ietlb6333jsdm3i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.buddyborrow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
