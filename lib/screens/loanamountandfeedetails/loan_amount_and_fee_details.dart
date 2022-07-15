@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
-import 'package:newbuddyborrow/screens/login/login_web.dart';
 import 'package:newbuddyborrow/webWidgets/custom_botton_web.dart';
 import 'package:newbuddyborrow/webWidgets/green_bottom_container.dart';
 import 'package:newbuddyborrow/webWidgets/web_textfield.dart';
@@ -17,41 +14,40 @@ class LoanAmountFeeDetailsWeb extends StatefulWidget {
 }
 
 class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
-  TextEditingController _firstnamecontroller = TextEditingController();
-  TextEditingController _middlecontroller = TextEditingController();
-  TextEditingController _surnamecontroller = TextEditingController();
-  TextEditingController _phonecontroller = TextEditingController();
-  TextEditingController _postcodecontroller = TextEditingController();
-  TextEditingController _emmailcontroller = TextEditingController();
+  TextEditingController _borrowernamecontroller = TextEditingController();
   TextEditingController _addresscontroller = TextEditingController();
+  TextEditingController _loanamountcontroller = TextEditingController();
+  TextEditingController _feeamountcontroller = TextEditingController();
+  TextEditingController _loanrepaymentcontroller = TextEditingController();
+  TextEditingController _postcodecontroller = TextEditingController();
   @override
   void initState() {
-    _firstnamecontroller = TextEditingController();
-    _middlecontroller = TextEditingController();
-    _surnamecontroller = TextEditingController();
-    _phonecontroller = TextEditingController();
-    _postcodecontroller = TextEditingController();
-    _emmailcontroller = TextEditingController();
+    _borrowernamecontroller = TextEditingController();
     _addresscontroller = TextEditingController();
+    _loanamountcontroller = TextEditingController();
+    _feeamountcontroller = TextEditingController();
+    _postcodecontroller = TextEditingController();
+    _loanrepaymentcontroller = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _firstnamecontroller.dispose();
-    _middlecontroller.dispose();
-    _surnamecontroller.dispose();
-    _phonecontroller.dispose();
+    _borrowernamecontroller.dispose();
+    _loanamountcontroller.dispose();
+    _loanrepaymentcontroller.dispose();
+    _feeamountcontroller.dispose();
     _postcodecontroller.dispose();
-    _emmailcontroller.dispose();
     _addresscontroller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
     DateTime selecteddDate = DateTime.now();
 
+    // ignore: unused_element
     Future<void> selectdDate(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
         context: context,
@@ -66,8 +62,16 @@ class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
         });
       }
     }
+    String dropdownvalue = 'Item 1';
 
-    bool valuefirst = false;
+    // List of items in our dropdown menu
+    var items = [
+      'Item 1',
+      'Item 2',
+      'Item 3',
+      'Item 4',
+      'Item 5',
+    ];
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(
@@ -95,19 +99,17 @@ class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () {
-                        Get.to(const LoginWeb());
-                      },
+                      onTap: () {},
                       child: Container(
                           width: Get.width * 0.09,
                           height: Get.height * 0.05,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Colors.transparent,
+                            color: Colors.white30,
                           ),
                           child: Center(
                             child: Text(
-                              'LOGIN',
+                              'LOAN CREATER',
                               style: TextStyle(
                                 color: kWhiteColor,
                               ),
@@ -122,11 +124,47 @@ class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
                         height: Get.height * 0.05,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Colors.white30,
+                          color: Colors.transparent,
                         ),
                         child: Center(
                           child: Text(
-                            'SIGN UP',
+                            'BORROWED',
+                            style: TextStyle(
+                              color: kWhiteColor,
+                            ),
+                          ),
+                        )),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                          width: Get.width * 0.09,
+                          height: Get.height * 0.05,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.transparent,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'LENDED',
+                              style: TextStyle(
+                                color: kWhiteColor,
+                              ),
+                            ),
+                          )),
+                    ),
+                    SizedBox(
+                      width: Get.width * 0.005,
+                    ),
+                    Container(
+                        width: Get.width * 0.09,
+                        height: Get.height * 0.05,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.transparent,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'ESCALATE',
                             style: TextStyle(
                               color: kWhiteColor,
                             ),
@@ -193,9 +231,9 @@ class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
                         height: Get.height * 0.1,
                       ),
                       SizedBox(
-                        height: Get.height * 0.4,
+                        height: Get.height * 0.3,
                         child: Image.asset(
-                          'assets/Login.png',
+                          'assets/milestone2.png',
                           fit: BoxFit.fitHeight,
                         ),
                       ),
@@ -224,37 +262,87 @@ class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
                             LoginTextFieldWeb(
                               hint: 'Borrower\'s name',
                               icon: Icons.person,
-                              controller: _firstnamecontroller,
+                              controller: _borrowernamecontroller,
                               isObscure: false,
                             ),
                             SizedBox(height: Get.height * 0.015),
                             LoginTextFieldWeb(
                               hint: 'Address',
                               icon: Icons.location_on_rounded,
-                              controller: _surnamecontroller,
+                              controller: _addresscontroller,
                               isObscure: false,
                             ),
                             SizedBox(height: Get.height * 0.015),
                             LoginTextFieldWeb(
                               hint: 'Post Code',
-                              icon: Icons.phone_android_rounded,
-                              controller: _phonecontroller,
+                              icon: Icons.pin_drop_outlined,
+                              controller: _postcodecontroller,
                               isObscure: false,
                             ),
                             SizedBox(height: Get.height * 0.015),
-                            LoginTextFieldWeb(
-                              hint: 'Address',
-                              icon: Icons.location_pin,
-                              controller: _addresscontroller,
-                              isObscure: false,
+                            Container(
+                              width: Get.width * 0.23,
+                              height: Get.height * 0.07,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7),
+                                color: kWhiteColor,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: Get.width * 0.01,
+                                  ),
+                                  Container(
+                                    height: Get.height * 0.05,
+                                    width: Get.height * 0.05,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.green.shade50),
+                                    child: const Icon(
+                                      Icons.loop_outlined,
+                                      size: 20,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: Get.width * 0.01,
+                                  ),
+                                  SizedBox(
+                                    width: Get.width * 0.17,
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton(
+                                        value: dropdownvalue,
+
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down),
+                                        items: items.map((String items) {
+                                          return DropdownMenuItem(
+                                            value: items,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(items),
+                                          );
+                                        }).toList(),
+                                        // After selecting the desired option,it will
+                                        // change button value to selected value
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            dropdownvalue = newValue!;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(
-                              height: Get.height * 0.01,
+                              height: Get.height * 0.02,
                             ),
-                            SizedBox(
-                              height: Get.height * 0.01,
+                           
+                            const CustomButtonWeb(
+                              text: 'CONTINUE',
+                              widdth: 0.23,
                             ),
-                            const CustomButtonWeb(text: 'CONTINUE'),
                           ],
                         ),
                         Column(
@@ -270,73 +358,37 @@ class _LoanAmountFeeDetailsWebState extends State<LoanAmountFeeDetailsWeb> {
                               ),
                             ),
                             LoginTextFieldWeb(
-                              hint: 'middle',
-                              icon: Icons.person,
-                              controller: _middlecontroller,
+                              hint: 'loan amount',
+                              icon: Icons.euro,
+                              controller: _loanamountcontroller,
                               isObscure: false,
                             ),
-                            SizedBox(height: Get.height * 0.015),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Container(
-                                width: Get.width * 0.2,
-                                height: Get.height * 0.07,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(7),
-                                  color: kWhiteColor,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: Get.width * 0.01,
-                                    ),
-                                    const Icon(
-                                      Icons.calendar_month,
-                                      size: 26,
-                                    ),
-                                    SizedBox(
-                                      width: Get.width * 0.01,
-                                    ),
-                                    SizedBox(
-                                      width: Get.width * 0.13,
-                                      child: Text(
-                                        '${selecteddDate.day}-${selecteddDate.month}-${selecteddDate.year}.',
-                                        style: TextStyle(
-                                            fontSize: 16, color: kBlackColor),
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    InkWell(
-                                      onTap: () {
-                                        selectdDate(context);
-                                      },
-                                      child: Icon(
-                                        Icons.calendar_month_outlined,
-                                        size: 26,
-                                        color: kGreenColor,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: Get.width * 0.01,
-                                    ),
-                                  ],
-                                ),
+                            SizedBox(height: Get.height * 0.02),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Fee if lender pays',
+                                style: TextStyle(color: kGrey, fontSize: 12),
                               ),
                             ),
-                            SizedBox(height: Get.height * 0.015),
                             LoginTextFieldWeb(
-                              hint: 'Email Address(Verified)',
-                              icon: Icons.phone_android_rounded,
-                              controller: _emmailcontroller,
+                              hint: 'fee amount',
+                              icon: Icons.euro,
+                              controller: _feeamountcontroller,
                               isObscure: false,
                             ),
-                            SizedBox(height: Get.height * 0.015),
+                            SizedBox(height: Get.height * 0.02),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Per month of fixed payment date',
+                                style: TextStyle(color: kGrey, fontSize: 12),
+                              ),
+                            ),
                             LoginTextFieldWeb(
-                              hint: 'Post code',
-                              icon: Icons.location_pin,
-                              controller: _postcodecontroller,
+                              hint: 'loan repayment',
+                              icon: Icons.euro,
+                              controller: _loanrepaymentcontroller,
                               isObscure: false,
                             ),
                           ],

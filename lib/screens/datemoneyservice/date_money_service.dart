@@ -1,38 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
-import 'package:newbuddyborrow/screens/login/login_web.dart';
 import 'package:newbuddyborrow/webWidgets/custom_botton_web.dart';
 import 'package:newbuddyborrow/webWidgets/green_bottom_container.dart';
+import 'package:newbuddyborrow/webWidgets/web_textfield.dart';
 
-class SecurityQuestionsWeb extends StatefulWidget {
-  const SecurityQuestionsWeb({super.key});
+class DateMoneyService extends StatefulWidget {
+  const DateMoneyService({super.key});
 
   @override
-  State<SecurityQuestionsWeb> createState() => _SecurityQuestionsWebState();
+  State<DateMoneyService> createState() => _DateMoneyServiceState();
 }
 
-class _SecurityQuestionsWebState extends State<SecurityQuestionsWeb> {
-  TextEditingController _securityonecontroller = TextEditingController();
-  TextEditingController _securitytwocontroller = TextEditingController();
-
-  @override
-  void initState() {
-    _securityonecontroller = TextEditingController();
-    _securitytwocontroller = TextEditingController();
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _securityonecontroller.dispose();
-    _securitytwocontroller.dispose();
-    super.dispose();
-  }
-
+class _DateMoneyServiceState extends State<DateMoneyService> {
   @override
   Widget build(BuildContext context) {
+    DateTime dateselected = DateTime.now();
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(
@@ -60,19 +43,17 @@ class _SecurityQuestionsWebState extends State<SecurityQuestionsWeb> {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () {
-                        Get.to(const LoginWeb());
-                      },
+                      onTap: () {},
                       child: Container(
                           width: Get.width * 0.09,
                           height: Get.height * 0.05,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Colors.transparent,
+                            color: Colors.white30,
                           ),
                           child: Center(
                             child: Text(
-                              'LOGIN',
+                              'LOAN CREATER',
                               style: TextStyle(
                                 color: kWhiteColor,
                               ),
@@ -87,11 +68,47 @@ class _SecurityQuestionsWebState extends State<SecurityQuestionsWeb> {
                         height: Get.height * 0.05,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Colors.white30,
+                          color: Colors.transparent,
                         ),
                         child: Center(
                           child: Text(
-                            'SIGN UP',
+                            'BORROWED',
+                            style: TextStyle(
+                              color: kWhiteColor,
+                            ),
+                          ),
+                        )),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                          width: Get.width * 0.09,
+                          height: Get.height * 0.05,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.transparent,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'LENDED',
+                              style: TextStyle(
+                                color: kWhiteColor,
+                              ),
+                            ),
+                          )),
+                    ),
+                    SizedBox(
+                      width: Get.width * 0.005,
+                    ),
+                    Container(
+                        width: Get.width * 0.09,
+                        height: Get.height * 0.05,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.transparent,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'ESCALATE',
                             style: TextStyle(
                               color: kWhiteColor,
                             ),
@@ -158,47 +175,50 @@ class _SecurityQuestionsWebState extends State<SecurityQuestionsWeb> {
                         height: Get.height * 0.1,
                       ),
                       SizedBox(
-                        width: Get.width * 0.25,
+                        height: Get.height * 0.4,
+                        width: Get.width * 0.3,
                         child: Image.asset(
-                          'assets/security.png',
-                          fit: BoxFit.fitWidth,
+                          'assets/date.png',
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(width: Get.width * 0.06),
                   SizedBox(
-                    width: Get.width * 0.55,
+                    width: Get.width * 0.3,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: Get.height * 0.1),
+                        SizedBox(height: Get.height * 0.12),
                         Text(
-                          'SECURITY QUESTIONS',
+                          'Date Money/Service is to be transfered to the borrower',
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
                               color: kBlackColor),
                         ),
-                        SizedBox(height: Get.height * 0.01),
+                        SizedBox(height: Get.height * 0.02),
+                        const DateContainer(),
+                        SizedBox(
+                          height: Get.height * 0.06,
+                        ),
                         Text(
-                          'Add these question for more security',
+                          'Date money is to be repaid',
                           style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
                               color: kBlackColor),
                         ),
-                        SizedBox(height: Get.height * 0.01),
-                        SecurityQuestionWeb(
-                            '1', 'what is your 1st school name'),
-                        SizedBox(height: Get.height * 0.02),
-                        SecurityQuestionWeb('2', 'Who is your best friend'),
-                        SizedBox(height: Get.height * 0.03),
+                        SizedBox(height: Get.height * 0.05),
+                        const DateContainer(),
+                        SizedBox(
+                          height: Get.height * 0.02,
+                        ),
                         const CustomButtonWeb(
-                          text: 'DONE',
-                          widdth: 0.25,
-                        )
+                          text: 'CONTINUE',
+                          widdth: 0.23,
+                        ),
                       ],
                     ),
                   ),
@@ -213,106 +233,84 @@ class _SecurityQuestionsWebState extends State<SecurityQuestionsWeb> {
   }
 }
 
-// ignore: must_be_immutable
-class SecurityQuestionWeb extends StatelessWidget {
-  SecurityQuestionWeb(this.number, this.question, {super.key});
-  String number;
-  String question;
+class DateContainer extends StatefulWidget {
+  const DateContainer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<DateContainer> createState() => _DateContainerState();
+}
+
+class _DateContainerState extends State<DateContainer> {
+  DateTime chosendate = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    Future<void> selectdDate(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: chosendate,
+        firstDate: DateTime(2015, 8, 3),
+        lastDate: DateTime(2101, 3, 5),
+      );
+
+      if (picked != null && picked != chosendate) {
+        setState(() {
+          chosendate = picked;
+        });
+      }
+    }
+
     return Container(
-      width: Get.width * 0.4,
-      height: Get.height * 0.23,
+      width: Get.width * 0.23,
+      height: Get.height * 0.07,
       decoration: BoxDecoration(
-          color: kWhiteColor, borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: EdgeInsets.only(
-          top: Get.height * 0.01,
-          left: Get.height * 0.01,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: Get.height * 0.04,
-                  width: Get.height * 0.04,
-                  decoration: BoxDecoration(
-                    color: kblueColor,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Center(
-                    child: Text(
-                      number,
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: kWhiteColor,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: Get.width * 0.01,
-                ),
-                Text(
-                  question,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: kBlackColor,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+        borderRadius: BorderRadius.circular(7),
+        color: kWhiteColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: Get.width * 0.01,
+          ),
+          Container(
+            height: Get.height * 0.05,
+            width: Get.height * 0.05,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle, color: Colors.green.shade50),
+            child: const Icon(
+              Icons.calendar_month,
+              size: 20,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: Get.width * 0.04),
-              child: const Text(
-                'Answer',
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.green,
-                    fontWeight: FontWeight.normal),
-              ),
+          ),
+          SizedBox(
+            width: Get.width * 0.01,
+          ),
+          SizedBox(
+            width: Get.width * 0.15,
+            child: Text(
+                '${chosendate.day}-${chosendate.month}-${chosendate.year}'),
+          ),
+          InkWell(
+            onTap: () {
+              selectdDate(context);
+            },
+            child: Container(
+              height: Get.height * 0.05,
+              width: Get.height * 0.05,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  offset: Offset.zero,
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                  color: Colors.grey.shade300,
+                )
+              ], shape: BoxShape.circle, color: Colors.white),
+              child: Icon(Icons.calendar_month_outlined, color: kblueColor),
             ),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            Container(
-              width: Get.width * 0.35,
-              height: Get.height * 0.12,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: kWhiteColor,
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.black12,
-                  )),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: Get.height * 0.02, right: Get.height * 0.02),
-                  child: TextField(
-                      maxLines: 3,
-                      // controller: controller,
-                      // obscureText: isObscure,
-                      style: const TextStyle(fontSize: 14),
-                      textAlign: TextAlign.left,
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontSize: 12,
-                          color: kGrey,
-                        ),
-                        border: InputBorder.none,
-                        hintText: 'type here....',
-                      )),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -307,7 +307,10 @@ class _SignUpWebState extends State<SignUpWeb> {
                             SizedBox(
                               height: Get.height * 0.01,
                             ),
-                            const CustomButtonWeb(text: 'CONTINUE'),
+                            const CustomButtonWeb(
+                              text: 'CONTINUE',
+                              widdth: 0.25,
+                            ),
                           ],
                         ),
                         Column(

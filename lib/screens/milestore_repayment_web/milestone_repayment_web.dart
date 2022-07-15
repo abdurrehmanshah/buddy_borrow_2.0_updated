@@ -1,14 +1,9 @@
-import 'dart:math';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
-import 'package:newbuddyborrow/screens/login/login_web.dart';
-import 'package:newbuddyborrow/screens/replaymintIn/replaymint_in.dart';
 import 'package:newbuddyborrow/webWidgets/custom_botton_web.dart';
 import 'package:newbuddyborrow/webWidgets/green_bottom_container.dart';
-import 'package:newbuddyborrow/webWidgets/web_textfield.dart';
 
 class MileStoreRepaymentWeb extends StatefulWidget {
   const MileStoreRepaymentWeb({super.key});
@@ -68,8 +63,6 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
         });
       }
     }
-
-    bool valuefirst = false;
 
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
@@ -262,7 +255,7 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                                   fontWeight: FontWeight.bold,
                                   color: kBlackColor),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             InkWell(
                               onTap: () {
                                 showDialog(
@@ -278,8 +271,9 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                                           width: Get.width * 0.22,
                                           decoration: BoxDecoration(
                                             color: kWhiteColor,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(20)),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(20)),
                                           ),
                                           child: Column(
                                             mainAxisAlignment:
@@ -495,7 +489,8 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                                 horizontal: Get.width * 0.015),
                             children: [
                               Padding(
-                                padding: EdgeInsets.symmetric(vertical: 5.0),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
                                 child: Container(
                                   height: Get.height * 0.19,
                                   decoration: BoxDecoration(
@@ -568,7 +563,8 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(vertical: 5.0),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
                                 child: Container(
                                   height: Get.height * 0.19,
                                   decoration: BoxDecoration(
@@ -641,7 +637,8 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(vertical: 5.0),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
                                 child: Container(
                                   height: Get.height * 0.19,
                                   decoration: BoxDecoration(
@@ -723,7 +720,10 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                           padding: EdgeInsets.only(
                             left: Get.width * 0.016,
                           ),
-                          child: const CustomButtonWeb(text: 'CONTINUE'),
+                          child: const CustomButtonWeb(
+                            text: 'CONTINUE',
+                            widdth: 0.25,
+                          ),
                         ),
                       ],
                     ),
@@ -731,7 +731,7 @@ class _MileStoreRepaymentWebState extends State<MileStoreRepaymentWeb> {
                 ],
               ),
             )),
-            BottomGreenContainer(),
+            const BottomGreenContainer(),
 
             // const BottomGreenContainer(),
           ],
@@ -769,6 +769,7 @@ class RoundedTextButtonWeb extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class TextColumnWeb extends StatelessWidget {
   TextColumnWeb({
     required this.width,

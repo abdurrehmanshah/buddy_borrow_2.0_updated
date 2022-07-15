@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
@@ -40,6 +38,7 @@ class _LoginWebState extends State<LoginWeb> with TickerProviderStateMixin {
     TabController tab = TabController(length: 2, vsync: this);
     DateTime selecteddDate = DateTime.now();
 
+    // ignore: unused_element
     Future<void> selectdDate(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
         context: context,
@@ -101,7 +100,7 @@ class _LoginWebState extends State<LoginWeb> with TickerProviderStateMixin {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(SignUpWeb());
+                        Get.to(const SignUpWeb());
                       },
                       child: Container(
                           width: Get.width * 0.09,
@@ -199,7 +198,10 @@ class _LoginWebState extends State<LoginWeb> with TickerProviderStateMixin {
                       SizedBox(
                         height: Get.height * 0.015,
                       ),
-                      const CustomButtonWeb(text: 'LOGIN'),
+                      const CustomButtonWeb(
+                        text: 'LOGIN',
+                        widdth: 0.25,
+                      ),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),

@@ -20,7 +20,7 @@ class LoginTextFieldWeb extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
-        width: Get.width * 0.2,
+        width: Get.width * 0.23,
         height: Get.height * 0.07,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7),
@@ -32,9 +32,15 @@ class LoginTextFieldWeb extends StatelessWidget {
             SizedBox(
               width: Get.width * 0.01,
             ),
-            Icon(
-              icon,
-              size: 26,
+            Container(
+              height: Get.height * 0.05,
+              width: Get.height * 0.05,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.green.shade50),
+              child: Icon(
+                icon,
+                size: 20,
+              ),
             ),
             SizedBox(
               width: Get.width * 0.01,

@@ -1,10 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
 
 class LoanCreaterWeb extends StatefulWidget {
@@ -222,6 +219,7 @@ class _LoanCreaterWebState extends State<LoanCreaterWeb> {
 }
 
 class LoanCreatorWidgetWeb extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   LoanCreatorWidgetWeb(
     this.asset,
     this.title,
@@ -260,7 +258,7 @@ class LoanCreatorWidgetWeb extends StatelessWidget {
                             fontWeight: FontWeight.normal,
                             color: kBlackColor),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Icon(
                         Icons.arrow_right_alt_rounded,
                         size: 30,
