@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
-import 'package:newbuddyborrow/screens/datemoneyservice/date_money_service.dart';
 import 'package:newbuddyborrow/webWidgets/custom_botton_web.dart';
 import 'package:newbuddyborrow/webWidgets/green_bottom_container.dart';
-import 'package:newbuddyborrow/webWidgets/web_textfield.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class InterestWeb extends StatefulWidget {
@@ -345,28 +343,26 @@ class _InterestWebState extends State<InterestWeb> {
                       ],
                     ),
                   ),
-                  // SizedBox(
-                  //   width: Get.width * .02,
-                  // ),
                   SizedBox(
-                    width: Get.width * 0.3,
+                    width: Get.width * 0.26,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: Get.height * 0.17),
-                        Container(
-                          width: Get.width * 0.23,
-                          height: Get.height * 0.07,
+                        SizedBox(
+                          height: Get.height * 0.16,
+                        ),
+                        SizedBox(
+                          width: Get.width * 0.25,
                           child: SfSlider(
-                            min: 0.0,
-                            max: 10.0,
+                            min: 0,
+                            max: 10,
                             value: _value,
                             interval: 1,
                             showTicks: true,
                             showLabels: true,
                             enableTooltip: true,
-                            minorTicksPerInterval: 1,
+                            minorTicksPerInterval: 0,
                             onChanged: (dynamic value) {
                               setState(() {
                                 _value = value;

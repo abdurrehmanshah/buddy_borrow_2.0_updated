@@ -4,14 +4,16 @@ import 'package:newbuddyborrow/core/constants/constants.dart';
 import 'package:newbuddyborrow/webWidgets/custom_botton_web.dart';
 import 'package:newbuddyborrow/webWidgets/green_bottom_container.dart';
 
-class DateMoneyService extends StatefulWidget {
-  const DateMoneyService({super.key});
+class FeePayerWeb extends StatefulWidget {
+  const FeePayerWeb({super.key});
 
   @override
-  State<DateMoneyService> createState() => _DateMoneyServiceState();
+  State<FeePayerWeb> createState() => _FeePayerWebState();
 }
 
-class _DateMoneyServiceState extends State<DateMoneyService> {
+class _FeePayerWebState extends State<FeePayerWeb> {
+  RxString value = "F".obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,56 +172,127 @@ class _DateMoneyServiceState extends State<DateMoneyService> {
                         ),
                       ),
                       SizedBox(
-                        height: Get.height * 0.1,
+                        height: Get.height * 0.04,
                       ),
                       SizedBox(
-                        height: Get.height * 0.4,
-                        width: Get.width * 0.3,
+                        // height: Get.height * 0.4,
+                        width: Get.width * 0.25,
                         child: Image.asset(
-                          'assets/date.png',
-                          fit: BoxFit.cover,
+                          'assets/fee1.png',
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    width: Get.width * 0.3,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: Get.height * 0.12),
-                        Text(
-                          'Date Money/Service is to be transfered to the borrower',
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: kBlackColor),
-                        ),
-                        SizedBox(height: Get.height * 0.02),
-                        const DateContainer(),
-                        SizedBox(
-                          height: Get.height * 0.06,
-                        ),
-                        Text(
-                          'Date money is to be repaid',
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: kBlackColor),
-                        ),
-                        SizedBox(height: Get.height * 0.05),
-                        const DateContainer(),
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                        const CustomButtonWeb(
-                          text: 'CONTINUE',
-                          widdth: 0.23,
-                        ),
-                      ],
-                    ),
+                    width: Get.width * 0.1,
                   ),
+                  Obx(() {
+                    return SizedBox(
+                      width: Get.width * 0.55,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: Get.height * 0.1),
+                          Text(
+                            'Fee Payer',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: kBlackColor),
+                          ),
+                          SizedBox(
+                            height: Get.height * 0.01,
+                          ),
+                          Text(
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus ac libero id blandit. In risus'
+                            'neque, commodo quis luctus a, convallis quis sapien. Aliquam vitae pharetra nibh. Sed mollis'
+                            'interdum ante sit amet mollis. Vivamus efficitur tincidunt iaculis. Nunc dapibus urna turpis, sit amet'
+                            'malesuada massa ornare sit amet.',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: kBlackColor,
+                            ),
+                          ),
+                          SizedBox(height: Get.height * 0.03),
+                          Container(
+                            width: Get.width * 0.23,
+                            height: Get.height * 0.07,
+                            decoration: BoxDecoration(
+                              color: kWhiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ListTile(
+                              title: const Text('borrower'),
+                              leading: Radio(
+                                value: "b",
+                                groupValue: value.value,
+                                onChanged: (String? newVal) {
+                                  setState(() {
+                                    value.value = newVal!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: Get.height * 0.02,
+                          ),
+                          Container(
+                            width: Get.width * 0.23,
+                            height: Get.height * 0.07,
+                            decoration: BoxDecoration(
+                              color: kWhiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ListTile(
+                              title: const Text('Lender'),
+                              leading: Radio(
+                                value: "l",
+                                groupValue: value.value,
+                                onChanged: (String? newVal) {
+                                  setState(() {
+                                    value.value = newVal!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: Get.height * 0.02,
+                          ),
+                          Container(
+                            width: Get.width * 0.23,
+                            height: Get.height * 0.07,
+                            decoration: BoxDecoration(
+                              color: kWhiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ListTile(
+                              title: const Text('Split'),
+                              leading: Radio(
+                                value: "s",
+                                groupValue: value.value,
+                                onChanged: (String? newVal) {
+                                  setState(() {
+                                    value.value = newVal!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: Get.height * 0.04,
+                          ),
+                          const CustomButtonWeb(
+                            text: 'CONTINUE',
+                            widdth: 0.23,
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                 ],
               ),
             )),
@@ -227,89 +300,6 @@ class _DateMoneyServiceState extends State<DateMoneyService> {
           ],
         ),
       )),
-    );
-  }
-}
-
-class DateContainer extends StatefulWidget {
-  const DateContainer({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<DateContainer> createState() => _DateContainerState();
-}
-
-class _DateContainerState extends State<DateContainer> {
-  DateTime chosendate = DateTime.now();
-  @override
-  Widget build(BuildContext context) {
-    Future<void> selectdDate(BuildContext context) async {
-      final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: chosendate,
-        firstDate: DateTime(2015, 8, 3),
-        lastDate: DateTime(2101, 3, 5),
-      );
-
-      if (picked != null && picked != chosendate) {
-        setState(() {
-          chosendate = picked;
-        });
-      }
-    }
-
-    return Container(
-      width: Get.width * 0.23,
-      height: Get.height * 0.07,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(7),
-        color: kWhiteColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: Get.width * 0.01,
-          ),
-          Container(
-            height: Get.height * 0.05,
-            width: Get.height * 0.05,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: Colors.green.shade50),
-            child: const Icon(
-              Icons.calendar_month,
-              size: 20,
-            ),
-          ),
-          SizedBox(
-            width: Get.width * 0.01,
-          ),
-          SizedBox(
-            width: Get.width * 0.15,
-            child: Text(
-                '${chosendate.day}-${chosendate.month}-${chosendate.year}'),
-          ),
-          InkWell(
-            onTap: () {
-              selectdDate(context);
-            },
-            child: Container(
-              height: Get.height * 0.05,
-              width: Get.height * 0.05,
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  offset: Offset.zero,
-                  blurRadius: 2,
-                  spreadRadius: 2,
-                  color: Colors.grey.shade300,
-                )
-              ], shape: BoxShape.circle, color: Colors.white),
-              child: Icon(Icons.calendar_month_outlined, color: kblueColor),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
