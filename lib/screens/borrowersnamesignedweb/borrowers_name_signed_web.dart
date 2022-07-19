@@ -2,21 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newbuddyborrow/core/constants/constants.dart';
 import 'package:newbuddyborrow/screens/pendingloanaprovalweb/pending_loan_approval_web.dart';
-import 'package:newbuddyborrow/webWidgets/custom_botton_web.dart';
 import 'package:newbuddyborrow/webWidgets/green_bottom_container.dart';
 
-class BorrowerNameWeb extends StatefulWidget {
-  const BorrowerNameWeb({super.key});
+class BorrowerNameSignedWeb extends StatefulWidget {
+  const BorrowerNameSignedWeb({super.key});
 
   @override
-  State<BorrowerNameWeb> createState() => _BorrowerNameWebState();
+  State<BorrowerNameSignedWeb> createState() => _BorrowerNameSignedWebState();
 }
 
-class _BorrowerNameWebState extends State<BorrowerNameWeb> {
+class _BorrowerNameSignedWebState extends State<BorrowerNameSignedWeb> {
   @override
   Widget build(BuildContext context) {
-    bool valuefirst = false;
-
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(
@@ -230,63 +227,25 @@ class _BorrowerNameWebState extends State<BorrowerNameWeb> {
                           'amet malesuada massa ornare sit amet.',
                       ftweight: FontWeight.normal),
                   SizedBox(
-                    height: Get.height * 0.05,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: Get.height * 0.05,
-                          child: Checkbox(
-                            checkColor: Colors.white,
-                            activeColor: Colors.white,
-                            value: valuefirst,
-                            onChanged: (value) {
-                              setState(() {
-                                valuefirst = value!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'agree to buddy borrow\'s ',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: kBlackColor,
-                          ),
-                        ),
-                        Text(
-                          'TERMS ',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: kblueColor,
-                          ),
-                        ),
-                        Text(
-                          '&',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: kBlackColor,
-                          ),
-                        ),
-                        Text(
-                          ' CONDITIONS',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: kblueColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
                     height: Get.height * 0.02,
                   ),
-                  const Align(
-                      alignment: Alignment.center,
-                      child: CustomButtonWeb(text: 'CONTINUE', widdth: 0.25))
+                  Text(
+                    'Signature',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: kGrey,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.005,
+                  ),
+                  Container(
+                    height: Get.height * 0.2,
+                    width: Get.width * 0.2,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: kWhiteColor),
+                  ),
                 ],
               ),
             )),
